@@ -1,12 +1,10 @@
-from numpy import source
-
-from papers.exeptions import ArticleException
+# from papers.exeptions import ArticleException
 from .configs import configs
-from .helpers import get_all_url_sub_domain, get_domain_in_url, get_html, get_infomation, is_article, is_category, get_article_urls, is_feed, make_request
+from .helpers import get_all_url_sub_domain, get_domain_in_url, get_html, get_infomation, is_article, is_category, get_article_urls, is_feed
 
 class Article:
-    url: str = ''
-    html: str = ''
+    url: str
+    html: str
     
     text: str
     top_image: str
