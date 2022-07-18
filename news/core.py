@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from papers.configs import configs
-from papers.models import Source
+from .configs import configs
+from .models import Source
 
 def build(url, **args):
     configurations = {
