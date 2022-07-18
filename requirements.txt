@@ -1,0 +1,7 @@
+nose
+sphinx
+requests
+beautifulsoup4
+pandas
+lxml
+newspaper3k
