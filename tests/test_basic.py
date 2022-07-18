@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from .context import papers
+from .context import news
 
 import unittest
 
