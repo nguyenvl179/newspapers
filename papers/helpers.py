@@ -119,37 +119,6 @@ def get_html(
         return False
 
     return BeautifulSoup(res.content, "html.parser")
-
-def get_urls(
-    base_url: str,
-    headers: list,
-    method: str='GET',
-    data: object={}
-) -> list:
-    domain = get_domain_in_url(base_url)
-    out = list()
-    
-    res = make_request(base_url, options={
-            "method": method, 
-            'data': data, 
-            'headers': headers  
-        }
-    )
-
-    if res.status_code != 200:
-        return False
-
-    soup = BeautifulSoup(res.content, "html.parser")
-
-    for url in soup.find_all('a', href=True):
-        if not hasattr(url, 'href'):
-            continue;
-
-        parsed_url = parse_url(base_url, url['href'])        
-        if parsed_url not in out and is_domain_in_url(domain, parsed_url):
-            out.append(parse_url(base_url, url['href']))
-            
-    return out;
     
 def get_category_urls(urls: list) -> list:
     return [url for url in urls if is_category(url)]
@@ -157,7 +126,7 @@ def get_category_urls(urls: list) -> list:
 def get_article_urls(urls: list) -> list:
     out = list()
     for url in urls:
-        urls = get_urls(url, [])
+        urls = get_infomation(url, [])
         out = out + [url for url in urls if is_article(url)]
     
     return out
